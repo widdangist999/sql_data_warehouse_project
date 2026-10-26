@@ -1,28 +1,42 @@
-use datawarehouseproject;
+/*
+===============================================================================
+DDL Script: Create Bronze Tables
+===============================================================================
+Purpose:
+    Create Bronze Layer tables for raw CRM and ERP data.
 
-CREATE TABLE IF NOT EXISTS bronze_crm_cust_info(
-cst_id int,
-cst_key varchar(50),
-cst_firstname varchar(100),
-cst_lastname varchar(100),
-cst_material_status varchar(50),
-cst_gndr varchar(50),
-cst_create_date date
+Notes:
+    - Written for MySQL.
+    - Existing tables are dropped before being recreated.
+    - Data is loaded from source CSV files.
+    - Running this script again will delete existing table data.
+===============================================================================
+*/
+
+DROP TABLE IF EXISTS bronze_crm_cust_info;
+CREATE TABLE bronze_crm_cust_info (
+    cst_id INT,
+    cst_key VARCHAR(50),
+    cst_firstname VARCHAR(50),
+    cst_lastname VARCHAR(50),
+    cst_marital_status VARCHAR(50),
+    cst_gndr VARCHAR(50),
+    cst_create_date DATE
 );
 
-
-CREATE TABLE IF NOT EXISTS bronze_crm_prd_info (
+DROP TABLE IF EXISTS bronze_crm_prd_info;
+CREATE TABLE bronze_crm_prd_info (
     prd_id INT,
     prd_key VARCHAR(50),
-    prd_nm VARCHAR(100),
+    prd_nm VARCHAR(50),
     prd_cost INT,
-    prd_line VARCHAR(20),
-    prd_start_dt DATE,
-    prd_end_dt DATE
+    prd_line VARCHAR(50),
+    prd_start_dt DATETIME,
+    prd_end_dt DATETIME
 );
 
-
-CREATE TABLE IF NOT EXISTS bronze_sales_details (
+DROP TABLE IF EXISTS bronze_crm_sales_details;
+CREATE TABLE bronze_crm_sales_details (
     sls_ord_num VARCHAR(50),
     sls_prd_key VARCHAR(50),
     sls_cust_id INT,
@@ -34,24 +48,24 @@ CREATE TABLE IF NOT EXISTS bronze_sales_details (
     sls_price INT
 );
 
-
-CREATE TABLE IF NOT EXISTS bronze_erp_cust_az12 (
-    CID VARCHAR(50),
-    BDATE DATE,
-    GEN VARCHAR(20)
+DROP TABLE IF EXISTS bronze_erp_loc_a101;
+CREATE TABLE bronze_erp_loc_a101 (
+    cid VARCHAR(50),
+    cntry VARCHAR(50)
 );
 
-
-CREATE TABLE IF NOT EXISTS bronze_erp_loc_a101 (
-    CID VARCHAR(50),
-    CNTRY VARCHAR(100)
+DROP TABLE IF EXISTS bronze_erp_cust_az12;
+CREATE TABLE bronze_erp_cust_az12 (
+    cid VARCHAR(50),
+    bdate DATE,
+    gen VARCHAR(50)
 );
 
-
-CREATE TABLE IF NOT EXISTS bronze_erp_px_cat_g1v2 (
-    ID VARCHAR(50),
-    CAT VARCHAR(100),
-    SUBCAT VARCHAR(100),
-    MAINTENANCE VARCHAR(10)
+DROP TABLE IF EXISTS bronze_erp_px_cat_g1v2;
+CREATE TABLE bronze_erp_px_cat_g1v2 (
+    id VARCHAR(50),
+    cat VARCHAR(50),
+    subcat VARCHAR(50),
+    maintenance VARCHAR(50)
 );
 
