@@ -147,4 +147,4 @@ Review the SQL scripts and update any file paths to match your local MySQL confi
 ## Connect
 
 - **LinkedIn:** [My LinkedIn Profile](https://www.linkedin.com/in/gist-widdan-anasis-3a0a5b39a?utm_source=share_via&utm_content=profile&utm_medium=member_android)
-- **GitHub:** [My GitHub Profile](GITHUB_PROFILE_URL)
+- **GitHub:** [My GitHub Profile](https://github.com/widdangist999)
