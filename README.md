@@ -117,8 +117,7 @@ sql_data_warehouse_project/
 │   ├── silver/
 │   └── gold/
 ├── tests/
-├── images/
-│   └── data_warehouse_architecture.png
+├── docs/ 
 └── README.md
 ```
 
